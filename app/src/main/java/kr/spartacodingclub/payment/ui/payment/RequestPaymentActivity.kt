@@ -14,6 +14,7 @@ import com.tosspayments.paymentsdk.model.PaymentMethodEventListener
 import com.tosspayments.paymentsdk.model.PaymentWidgetStatusListener
 import com.tosspayments.paymentsdk.model.TossPaymentResult
 import com.tosspayments.paymentsdk.view.PaymentMethod
+import kr.spartacodingclub.payment.R
 import kr.spartacodingclub.payment.databinding.ActivityRequestPaymentBinding
 import kr.spartacodingclub.payment.ui.paymentresult.PaymentResultActivity
 import kr.spartacodingclub.payment.util.Extension.toast
@@ -45,7 +46,7 @@ class RequestPaymentActivity : AppCompatActivity() {
                 currency = getSerializableExtra(EXTRA_KEY_CURRENCY) as? PaymentMethod.Rendering.Currency
                     ?: PaymentMethod.Rendering.Currency.KRW,
                 countryCode = getStringExtra(EXTRA_KEY_COUNTRY_CODE)?.takeIf { it.length == 2 }
-                    ?: "KR",
+                    ?: getString(R.string.country_code_kr),
                 variantKey = getStringExtra(EXTRA_KEY_VARIANT_KEY) ?: "",
                 point = getIntExtra(POINT, 0))
         }

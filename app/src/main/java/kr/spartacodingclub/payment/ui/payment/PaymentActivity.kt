@@ -91,7 +91,7 @@ class PaymentActivity : AppCompatActivity() {
                     val isValid = viewModel.checkValidPoint(editText?.text.toString())
 
                     if (!isValid) {
-                        error = "포인트를 사용할 수 없습니다."
+                        error = context.getString(R.string.unavailable_to_use_point)
                     } else {
                         binding.layoutCoupon
                         viewModel.setPoint(editText?.text.toString())
@@ -106,7 +106,7 @@ class PaymentActivity : AppCompatActivity() {
                         }
                     }
                 } else {
-                    toast("포인트를 입력하지 않았습니다")
+                    toast(context.getString(R.string.point_not_input))
                 }
             }
         }

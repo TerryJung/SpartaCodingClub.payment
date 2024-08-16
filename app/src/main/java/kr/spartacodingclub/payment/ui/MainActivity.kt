@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.isLogout.observe(this) { isLogout ->
             if (isLogout) {
-                toast("사용자 정보가 모두 삭제 되었습니다")
+                toast(getString(R.string.user_information_all_deleted))
                 startActivity(Intent(this, LoginActivity::class.java))
                 finishAffinity()
             }

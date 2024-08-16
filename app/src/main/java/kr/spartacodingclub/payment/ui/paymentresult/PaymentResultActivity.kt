@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kr.spartacodingclub.payment.R
 import kr.spartacodingclub.payment.databinding.ActivityPaymentResultBinding
 import kr.spartacodingclub.payment.ui.MainActivity
 import kr.spartacodingclub.payment.util.Extension.toast
@@ -23,7 +24,7 @@ class PaymentResultActivity : AppCompatActivity() {
         isSuccess = intent?.getBooleanExtra(EXTRA_RESULT, false) == true
         resultDataList = intent?.getStringArrayListExtra(EXTRA_DATA).orEmpty()
 
-        toast(if (isSuccess) "::결제 성공::" else "::결제 실패::")
+        toast(if (isSuccess) getString(R.string.payment_success) else getString(R.string.payment_failed))
 
         bind()
     }
