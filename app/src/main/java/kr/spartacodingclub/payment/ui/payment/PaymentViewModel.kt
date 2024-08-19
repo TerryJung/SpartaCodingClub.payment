@@ -17,6 +17,7 @@ import kr.spartacodingclub.payment.util.Constants.POINT
 import kr.spartacodingclub.payment.util.Constants.USER_NAME
 import kr.spartacodingclub.payment.util.RegexUtil
 import kr.spartacodingclub.payment.util.SharedPrefUtil
+import kotlin.math.roundToInt
 
 class PaymentViewModel(app: Application) : AndroidViewModel(app) {
 
@@ -66,17 +67,7 @@ class PaymentViewModel(app: Application) : AndroidViewModel(app) {
         couponList.filter {
             value == it.name
         }.map {
-            if (it.type == "정률") {
-                val discountValue = price.value?.times(it.discount)?.div(100) ?: 0
-                discount.value = discountValue
-
-                setTotal(coupon = discountValue, point = point.value ?: 0)
-            } else if (it.type == "정액") {
-                val discountValue = it.discount
-                discount.value = discountValue
-
-                setTotal(coupon = discountValue, point = point.value ?: 0)
-            }
+            setTotal(coupon = CouponDiscountUseCases().getResult(price.value?:0,it.type, it.discount), point.value?:0)
         }
     }
 

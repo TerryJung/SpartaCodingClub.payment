@@ -19,7 +19,7 @@ class PaymentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentBinding
     private val viewModel: PaymentViewModel by viewModels()
 
-    private var amount: Int = 19500
+    private var amount: Int = 19499
     private var point: Int = 0
 
 
